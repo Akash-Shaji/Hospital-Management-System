@@ -18,6 +18,7 @@ Requirements
 This project needs the following to run properly:
 
 Software requirements
+
 -Python 3 or above
 -MySql
 -MySql connectors
