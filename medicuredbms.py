@@ -14,169 +14,6 @@ y.execute('create table Doctor_Details(Doc_id int(5) primary key,Name varchar(25
 y.execute('create table Patient_Details(Patient_id int(5) primary key,Name varchar(25),Age int(3),Gender char(2),Address varchar(100),\
 Phno char(10),RoomNumber char(4),Doctorname varchar(25),Dept varchar(25),Doc_id int (5),FOREIGN KEY (Doc_id) REFERENCES Doctor_Details(Doc_id))')
 
-def main():
-    t=1
-    while True:
-        print("+-------------------------------------------------------------------+")
-        print("|                                                                   |")
-        print("|          Welcome to Medicure Database Management System           |")
-        print("|                                                                   |")
-        print("+-------------------------------------------------------------------+")
-        print("+-------------------------------------------------------------------+")
-        print("|                      Enter 1 for Admin Mode                       |")
-        print("+-------------------------------------------------------------------+")
-        print("|                      Enter 2 for User Mode                        |")
-        print("+-------------------------------------------------------------------+")
-        print("|                      Enter 3 to Exit                              |")
-        print("+-------------------------------------------------------------------+")
-        Mode = input("Enter your mode : ")
-        if Mode == "1" : #Admin mode
-            Password = input("Please enter your password : ")
-            while True :
-                if Password == "1234" :
-                    os.system('cls')
-                    print("+----------------------------------------------------------------+")
-                    print("|                     Welcome to admin mode                      |")
-                    print("+----------------------------------------------------------------+")
-                    print("|                    To manage patients      Enter 1             |")
-                    print("|                    To manage doctors       Enter 2             |")
-                    print("|                    To switch modes         Enter S             |")
-                    print("|                    To open MYSQL DIRECT    Enter 3             |")
-                    print("+----------------------------------------------------------------+")
-                    AdminOpt = input ("Enter your choice : ")
-                    AdminOpt = AdminOpt.upper()
-                    os.system('cls')
-                    if AdminOpt == "1" : #Admin mode --> Patient Management
-                        while True:
-                            print("+-------------------------------------------------------------------------------+")
-                            print("|                To add new patient                          Enter 1            |")
-                            print("|                To display patient details                  Enter 2            |")
-                            print("|                To delete patient data                      Enter 3            |")
-                            print("|                To edit patient data                        Enter 4            |")
-                            print("|                To view patient table                       Enter 5            |")
-                            print("|                To view list of patients in particular dept Enter 6            |")
-                            print("|                To go Back                                  Enter B            |")
-                            print("+-------------------------------------------------------------------------------+")
-                            AChoice = input ("Enter your choice : ")
-                            AChoice = AChoice.upper()
-                            os.system('cls')
-                            if AChoice == "1" :   #Admin mode-->Patient Management-->Add patient
-                                addpatient()
-                                CONTINUE()
-                            elif AChoice == "2" : #Admin mode-->Patient Management-->View patient details
-                                viewpatient()
-                                CONTINUE()
-                            elif AChoice == "3" : #Admin mode -->Patient Management --> Delete patient data
-                                deletepatient()
-                                CONTINUE()
-                            elif AChoice == "4" : #Admin mode --> Patient Management --> Edit patient data
-                                editpatient()
-                            elif AChoice =='5':   #Admin mode -->Patient Management-->View patient table
-                                viewfullpattable()
-                                CONTINUE()
-                            elif AChoice=='6':    #Admin mode -->Patient Management-->View list of patients in a given department
-                                deptpatlst()
-                                CONTINUE()
-                            elif AChoice=='B':    #Admin mode-->Patient Management-->back
-                                break
-                            else:
-                                print('please enter correct option')
-                    
-                    elif AdminOpt == "2" : #Admin mode --> Doctors Management
-                        while True:
-                            print("+---------------------------------------------------------------------------------+")
-                            print("|                     To add new doctor                                  Enter 1  |")
-                            print("|                     To display doctor                                  Enter 2  |")
-                            print("|                     To delete doctor data                              Enter 3  |")
-                            print("|                     To edit doctor data                                Enter 4  |")
-                            print("|                     To view full doctor table                          Enter 5  |")
-                            print("|                     To view list of patients treated by doc            Enter 6  |")
-                            print("|                     To view list of doctors working in particular dept Enter 7  |")
-                            print("|                     To go back                                         Enter B  |")
-                            print("+---------------------------------------------------------------------------------+")
-                            AChoice = input ("Enter your choice : ")
-                            AChoice = AChoice.upper()
-                            os.system('cls')
-                            if AChoice == "1" : #Admin mode --> Doctors Management --> Enter new doctor data
-                                adddoc()
-                                CONTINUE()
-                            elif AChoice == "2" : #Admin mode --> Doctors Management --> Display doctor data
-                                dispdoc()
-                                CONTINUE()
-                            elif AChoice == "3" : #Admin mode --> Doctors Management --> Delete doctor data
-                                deldoc()
-                                CONTINUE()
-                            elif AChoice == "4" : #Admin mode --> Doctors Management --> Edit Doctor data
-                                editdoc()
-                            elif AChoice =="5":#Admin_mode--> Doctors Management--> View full Doctor Table 
-                                viewfulldoctable()
-                                CONTINUE()
-                            elif AChoice=="6":#Admin_mode--> Doctors Management--> View list of patients treated by Doctor 
-                                docpatlst()
-                                CONTINUE()
-                            elif AChoice=="7":#Admin_mode--> Doctors Management--> View list of doctors in a particular department
-                                deptdoclst()
-                                CONTINUE()
-                            elif AChoice == "B":#Admin_mode--> Doctors Management--> back
-                                break
-                            else:
-                                print('please enter correct option')
-                    elif AdminOpt =='3':#Admin_mode-->MYSQL DIRECT
-                        os.system('cls')
-                        MYSql()
-                    elif AdminOpt =='S':#Admin_mode-->Switch Modes
-                        os.system('cls')
-                        main()
-                    else:
-                        print('please enter correct option')
-                else :#incorrect password
-                    while t< 3 :
-                        Password = input("Password incorrect, please try again : ")
-                        t+= 1
-                        if Password=="1234":
-                            t-=1
-                            break
-                    if t==3:
-                        print("You have been locked out of the system.....")
-                        time.sleep(5)
-                        sys.exit()
-                   
-        elif Mode == "2" : #User mode
-            os.system('cls')
-            while True:
-                print("+---------------------------------------------------------------+")
-                print("|                     Welcome to user mode                      |")
-                print("+---------------------------------------------------------------+")
-                print("+---------------------------------------------------------------+")
-                print("|             To view hospital's departments           Enter 1  |")
-                print("|             To view hospital's doctors               Enter 2  |")
-                print("|             To view patient's details                Enter 3  |")
-                print("|             To switch modes                          Enter S  |")
-                print("+---------------------------------------------------------------+")
-                UOpt = input("Enter your choice : ")
-                UOpt = UOpt.upper()
-                os.system('cls')
-                if   UOpt == "1" : #User mode --> view hospital's departments
-                    dispdepuser()
-                    CONTINUE()
-                elif UOpt == "2" : #User mode --> view hospital's Doctors
-                    dispdocuser()
-                    CONTINUE()
-                elif UOpt == "3" : #User mode --> view patient's details
-                    viewpatient()
-                    CONTINUE()
-                elif UOpt == "S" : #Back
-                    os.system('cls')
-                    main()
-                else :
-                    print("Please Enter a correct choice")
-        elif Mode=="3":
-            sys.exit()
-            
-        else :
-            print("Please choice just 1 or 2")
-
-
 #function definitions
         
 def addpatient():#funtion to add patient
@@ -565,7 +402,170 @@ def CONTINUE():#function to check if the user would like to continue with progra
             sys.exit()
         else:
             print('\n\n\n enter correct option')
-       
+def main():
+    t=1
+    while True:
+        print("+-------------------------------------------------------------------+")
+        print("|                                                                   |")
+        print("|          Welcome to Medicure Database Management System           |")
+        print("|                                                                   |")
+        print("+-------------------------------------------------------------------+")
+        print("+-------------------------------------------------------------------+")
+        print("|                      Enter 1 for Admin Mode                       |")
+        print("+-------------------------------------------------------------------+")
+        print("|                      Enter 2 for User Mode                        |")
+        print("+-------------------------------------------------------------------+")
+        print("|                      Enter 3 to Exit                              |")
+        print("+-------------------------------------------------------------------+")
+        Mode = input("Enter your mode : ")
+        if Mode == "1" : #Admin mode
+            Password = input("Please enter your password : ")
+            while True :
+                if Password == "1234" :
+                    os.system('cls')
+                    print("+----------------------------------------------------------------+")
+                    print("|                     Welcome to admin mode                      |")
+                    print("+----------------------------------------------------------------+")
+                    print("|                    To manage patients      Enter 1             |")
+                    print("|                    To manage doctors       Enter 2             |")
+                    print("|                    To switch modes         Enter S             |")
+                    print("|                    To open MYSQL DIRECT    Enter 3             |")
+                    print("+----------------------------------------------------------------+")
+                    AdminOpt = input ("Enter your choice : ")
+                    AdminOpt = AdminOpt.upper()
+                    os.system('cls')
+                    if AdminOpt == "1" : #Admin mode --> Patient Management
+                        while True:
+                            print("+-------------------------------------------------------------------------------+")
+                            print("|                To add new patient                          Enter 1            |")
+                            print("|                To display patient details                  Enter 2            |")
+                            print("|                To delete patient data                      Enter 3            |")
+                            print("|                To edit patient data                        Enter 4            |")
+                            print("|                To view patient table                       Enter 5            |")
+                            print("|                To view list of patients in particular dept Enter 6            |")
+                            print("|                To go Back                                  Enter B            |")
+                            print("+-------------------------------------------------------------------------------+")
+                            AChoice = input ("Enter your choice : ")
+                            AChoice = AChoice.upper()
+                            os.system('cls')
+                            if AChoice == "1" :   #Admin mode-->Patient Management-->Add patient
+                                addpatient()
+                                CONTINUE()
+                            elif AChoice == "2" : #Admin mode-->Patient Management-->View patient details
+                                viewpatient()
+                                CONTINUE()
+                            elif AChoice == "3" : #Admin mode -->Patient Management --> Delete patient data
+                                deletepatient()
+                                CONTINUE()
+                            elif AChoice == "4" : #Admin mode --> Patient Management --> Edit patient data
+                                editpatient()
+                            elif AChoice =='5':   #Admin mode -->Patient Management-->View patient table
+                                viewfullpattable()
+                                CONTINUE()
+                            elif AChoice=='6':    #Admin mode -->Patient Management-->View list of patients in a given department
+                                deptpatlst()
+                                CONTINUE()
+                            elif AChoice=='B':    #Admin mode-->Patient Management-->back
+                                break
+                            else:
+                                print('please enter correct option')
+                    
+                    elif AdminOpt == "2" : #Admin mode --> Doctors Management
+                        while True:
+                            print("+---------------------------------------------------------------------------------+")
+                            print("|                     To add new doctor                                  Enter 1  |")
+                            print("|                     To display doctor                                  Enter 2  |")
+                            print("|                     To delete doctor data                              Enter 3  |")
+                            print("|                     To edit doctor data                                Enter 4  |")
+                            print("|                     To view full doctor table                          Enter 5  |")
+                            print("|                     To view list of patients treated by doc            Enter 6  |")
+                            print("|                     To view list of doctors working in particular dept Enter 7  |")
+                            print("|                     To go back                                         Enter B  |")
+                            print("+---------------------------------------------------------------------------------+")
+                            AChoice = input ("Enter your choice : ")
+                            AChoice = AChoice.upper()
+                            os.system('cls')
+                            if AChoice == "1" : #Admin mode --> Doctors Management --> Enter new doctor data
+                                adddoc()
+                                CONTINUE()
+                            elif AChoice == "2" : #Admin mode --> Doctors Management --> Display doctor data
+                                dispdoc()
+                                CONTINUE()
+                            elif AChoice == "3" : #Admin mode --> Doctors Management --> Delete doctor data
+                                deldoc()
+                                CONTINUE()
+                            elif AChoice == "4" : #Admin mode --> Doctors Management --> Edit Doctor data
+                                editdoc()
+                            elif AChoice =="5":#Admin_mode--> Doctors Management--> View full Doctor Table 
+                                viewfulldoctable()
+                                CONTINUE()
+                            elif AChoice=="6":#Admin_mode--> Doctors Management--> View list of patients treated by Doctor 
+                                docpatlst()
+                                CONTINUE()
+                            elif AChoice=="7":#Admin_mode--> Doctors Management--> View list of doctors in a particular department
+                                deptdoclst()
+                                CONTINUE()
+                            elif AChoice == "B":#Admin_mode--> Doctors Management--> back
+                                break
+                            else:
+                                print('please enter correct option')
+                    elif AdminOpt =='3':#Admin_mode-->MYSQL DIRECT
+                        os.system('cls')
+                        MYSql()
+                    elif AdminOpt =='S':#Admin_mode-->Switch Modes
+                        os.system('cls')
+                        main()
+                    else:
+                        print('please enter correct option')
+                else :#incorrect password
+                    while t< 3 :
+                        Password = input("Password incorrect, please try again : ")
+                        t+= 1
+                        if Password=="1234":
+                            t-=1
+                            break
+                    if t==3:
+                        print("You have been locked out of the system.....")
+                        time.sleep(5)
+                        sys.exit()
+                   
+        elif Mode == "2" : #User mode
+            os.system('cls')
+            while True:
+                print("+---------------------------------------------------------------+")
+                print("|                     Welcome to user mode                      |")
+                print("+---------------------------------------------------------------+")
+                print("+---------------------------------------------------------------+")
+                print("|             To view hospital's departments           Enter 1  |")
+                print("|             To view hospital's doctors               Enter 2  |")
+                print("|             To view patient's details                Enter 3  |")
+                print("|             To switch modes                          Enter S  |")
+                print("+---------------------------------------------------------------+")
+                UOpt = input("Enter your choice : ")
+                UOpt = UOpt.upper()
+                os.system('cls')
+                if   UOpt == "1" : #User mode --> view hospital's departments
+                    dispdepuser()
+                    CONTINUE()
+                elif UOpt == "2" : #User mode --> view hospital's Doctors
+                    dispdocuser()
+                    CONTINUE()
+                elif UOpt == "3" : #User mode --> view patient's details
+                    viewpatient()
+                    CONTINUE()
+                elif UOpt == "S" : #Back
+                    os.system('cls')
+                    main()
+                else :
+                    print("Please Enter a correct choice")
+        elif Mode=="3":
+            sys.exit()
+            
+        else :
+            print("Please choice just 1 or 2")
+
+
+
     
 main()
 x.close()
