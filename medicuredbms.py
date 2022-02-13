@@ -1,10 +1,12 @@
+#Co-authored by: Darkpanther253 <karthik.rajeev253@gmail.com>
+
 import mysql.connector
 import sys
 import os
 import time
 
 
-x=mysql.connector.connect(host='localhost',user='root',passwd='phantom@2020')
+x=mysql.connector.connect(host='localhost',user='root',passwd='########')
 y=x.cursor()
 y.execute('drop database medicuredbms')
 y.execute('create database medicuredbms')
@@ -25,7 +27,7 @@ def addpatient():#funtion to add patient
     Address       =input("Enter patient address                   : ")
     Phno          =input("Enter patient phone number              : ")
     RoomNumber    =input("Enter patient room number               : ")
-    Department    =input("Enter the department                    :")
+    Department    =input("Enter the department                    : ")
     Doc_id   = int(input("Enter the doctor id                     : "))
     y.execute("insert into patient_details values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",(Patient_id,Name,Age,Gender,Address,\
     Phno,RoomNumber,DoctorName,Department,Doc_id ))
@@ -62,49 +64,67 @@ def deletepatient():#funtion to delete patient
             print("----------------------Patient data deleted successfully----------------------")
             break
 def editpatdep(Patient_id):#funtion to edit patient department
-    Department=input("Enter correct department : ")
-    y.execute("update patient_details set Department =%s where Patient_id =%s",(Department,Patient_id))
-    print("----------------------Patient Department edited successfully----------------------")
+    while True:
+        Department=input("Enter correct department : ")
+        y.execute("update patient_details set Department =%s where Patient_id =%s",(Department,Patient_id))
+        print("----------------------Patient Department edited successfully----------------------")
+        break
 
 def editpatdoc(Patient_id):#funtion to edit doctor following patient
-    DoctorName=input("enter the correct doctors name : ")
-    y.execute("update patient_details set DoctorName =%s where Patient_id =%s",(DoctorName,Patient_id))
-    print("----------------------Doctor follouing case edited successfully----------------------")
+    while True:
+        DoctorName=input("enter the correct doctors name : ")
+        y.execute("update patient_details set DoctorName =%s where Patient_id =%s",(DoctorName,Patient_id))
+        print("----------------------Doctor follouing case edited successfully----------------------")
+        break
 
 def editpatname(Patient_id):#funtion to edit patient name
-    Name=input("enter the correct patient's name : ")
-    y.execute("update patient_details set Name =%s where Patient_id =%s",(Name,Patient_id))
-    print("----------------------Patient name edited successfully----------------------")
+    while True:
+        Name=input("enter the correct patient's name : ")
+        y.execute("update patient_details set Name =%s where Patient_id =%s",(Name,Patient_id))
+        print("----------------------Patient name edited successfully----------------------")
+        break
 
 def editpatage(Patient_id):#funtion to edit patient age
-    Age=int(input("enter the correct patient's age : "))
-    y.execute("update patient_details set Age =%s where Patient_id =%s",(Age,Patient_id))
-    print("----------------------Patient age edited successfully----------------------")
+    while True:
+        Age=int(input("enter the correct patient's age : "))
+        y.execute("update patient_details set Age =%s where Patient_id =%s",(Age,Patient_id))
+        print("----------------------Patient age edited successfully----------------------")
+        break
 
 def editpatgender(Patient_id):#function to edit patient gender
-    Gender=input("enter the correct patient's gender : ")
-    y.execute("update patient_details set Gender =%s where Patient_id =%s",(Gender,Patient_id))
-    print("----------------------Patient address gender successfully----------------------")
+    while True:
+        Gender=input("enter the correct patient's gender : ")
+        y.execute("update patient_details set Gender =%s where Patient_id =%s",(Gender,Patient_id))
+        print("----------------------Patient address gender successfully----------------------")
+        break
 
 def editpataddress(Patient_id):#funtion to edit patient address
-    Address=input("enter the correct patient's address : ")
-    y.execute("update patient_details set Address =%s where Patient_id =%s",(Address,Patient_id))
-    print("----------------------Patient address edited successfully----------------------")
+    while True:
+        Address=input("enter the correct patient's address : ")
+        y.execute("update patient_details set Address =%s where Patient_id =%s",(Address,Patient_id))
+        print("----------------------Patient address edited successfully----------------------")
+        break
 
 def editpatroom(Patient_id):#funtion to edit patient room no
-     RoomNumber =int(input("enter the correct patient's roomno : "))
-     y.execute("update patient_details set RoomNumber =%s where Patient_id =%s",(RoomNumber,Patient_id))
-     print("----------------------Patient RoomNumber edited successfully----------------------")
+    while True:
+        RoomNumber =int(input("enter the correct patient's roomno : "))
+        y.execute("update patient_details set RoomNumber =%s where Patient_id =%s",(RoomNumber,Patient_id))
+        print("----------------------Patient RoomNumber edited successfully----------------------")
+        break
 
 def editphno(Patient_id):
-    Phno=int(input("enter the correct patient's phone no. : "))#function to edit patient phone no
-    y.execute("update patient_details set Phno =%s where Patient_id =%s",(Phno,Patient_id))
-    print("----------------------Patient phoneno edited successfully----------------------")
+    while True:
+        Phno=int(input("enter the correct patient's phone no. : "))#function to edit patient phone no
+        y.execute("update patient_details set Phno =%s where Patient_id =%s",(Phno,Patient_id))
+        print("----------------------Patient phoneno edited successfully----------------------")
+        break
 
 def editdocid(Patient_id):
-    Doc_id = int(input("enter the correct doctor's id : "))#function to edit doc id
-    y.execute("update patient_details set Doc_id =%s where Patient_id =%s",(Doc_id,Patient_id))
-    print("----------------------Doctor id edited successfully----------------------")
+    while True:
+        Doc_id = int(input("enter the correct doctor's id : "))#function to edit doc id
+        y.execute("update patient_details set Doc_id =%s where Patient_id =%s",(Doc_id,Patient_id))
+        print("----------------------Doctor id edited successfully----------------------")
+        break
 
 def editpatient():#funtion to edit patient
     Patient_id=int(input("Enter patient ID :"))
@@ -123,48 +143,46 @@ def editpatient():#funtion to edit patient
         print("-----------------------------------------")
         Admin_choice = input("Enter your choice : ")
         Admin_choice = Admin_choice.upper()
-        while True:
-            if Admin_choice == "1" :
-                editpatdep(Patient_id)
-                CONTINUE()
+        if Admin_choice == "1" :
+            editpatdep(Patient_id)
+            CONTINUE()
                 
-            elif Admin_choice == "2" :
-                editdoc(Patient_id)
-                CONTINUE()
+        elif Admin_choice == "2" :
+            editdoc(Patient_id)
+            CONTINUE()
                     
-            elif Admin_choice == "3" :
-                editpatname(Patient_id)
-                CONTINUE()
+        elif Admin_choice == "3" :
+            editpatname(Patient_id)
+            CONTINUE()
                     
-            elif Admin_choice == "4" :
-                editpatage(Patient_id)
-                CONTINUE()
+        elif Admin_choice == "4" :
+            editpatage(Patient_id)
+            CONTINUE()
                     
-            elif Admin_choice == "5" :
-                editpatgender(Patient_id)
-                CONTINUE()
+        elif Admin_choice == "5" :
+            editpatgender(Patient_id)
+            CONTINUE()
                 
-            elif Admin_choice == "6" :
-                editpataddress(Patient_id)
-                CONTINUE()
+        elif Admin_choice == "6" :
+            editpataddress(Patient_id)
+            CONTINUE()
                     
-            elif Admin_choice == "7" :
-                editpatroom(Patient_id)
-                CONTINUE()
+        elif Admin_choice == "7" :
+            editpatroom(Patient_id)
+            CONTINUE()
                     
-            elif Admin_choice == "8" :
-                editphno(Patient_id)
-                CONTINUE()
+        elif Admin_choice == "8" :
+            editphno(Patient_id)
+            CONTINUE()
                 
-            elif Admin_choice =='9':
-                editdocid(Patient_id)
-                CONTINUE()
+        elif Admin_choice =='9':
+            editdocid(Patient_id)
+            CONTINUE()
                     
-            elif Admin_choice == "B" :
-                CONTINUE()
-                break
-            else :
-                Achoice=int(input("Please Enter a correct choice"))
+        elif Admin_choice == "B" :
+            break
+        else :
+            Achoice=int(input("Please Enter a correct choice"))
 
 
 def viewfullpattable():#function to view full patient table
@@ -269,7 +287,7 @@ def editdoc():#funtion to edit doctor
         print("|To Edit doctor's name Enter 2          |")
         print("|To Edit doctor's address Enter 3       |")
         print("|To Edit doctor's phone number Enter 4  |")
-        print("To go Back Enter B                      |")
+        print("|To go Back Enter B                     |")
         print("-----------------------------------------")
         Achoice=input("Enter your choice : ")
         Achoice=Achoice.upper()
