@@ -27,6 +27,8 @@ Software requirements
 
 Additional Points
 
+-replace the password field in the mysql.connector.connect line.
+
 -Some of the code might have to be commented out 
 eg: The drop database line must be commented out unless there is a need to reset the database
 The create databases and create tables command must be commented out after set up
