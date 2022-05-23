@@ -18,7 +18,7 @@ Phno char(10),RoomNumber char(4),Doctorname varchar(25),Dept varchar(25),Doc_id 
 
 #function definitions
         
-def addpatient():#funtion to add patient
+def addpatient():#function to add patient
     Patient_id=int(input("Enter patient ID                        : "))
     DoctorName    =input("Enter name of doctor following the case : ")
     Name          =input("Enter patient name                      : ")
@@ -34,7 +34,7 @@ def addpatient():#funtion to add patient
     print("----------------------Patient added successfully----------------------")
 
 
-def viewpatient():#funtion to view patient details
+def viewpatient():#function to view patient details
     Patient_id= int(input("Enter patient ID : "))
     y.execute("select * from patient_details where Patient_id=(%s)",(Patient_id,)) 
     z=y.fetchall()
@@ -51,7 +51,7 @@ def viewpatient():#funtion to view patient details
         print("no record found")
 
         
-def deletepatient():#funtion to delete patient
+def deletepatient():#function to delete patient
     while True:
         Patient_id = int(input("Enter patient ID : "))
         y.execute("select * from patient_details where patient_id=(%s)",(patient_id,)) 
@@ -63,28 +63,28 @@ def deletepatient():#funtion to delete patient
             y.execute("delete from patient_details where Patient_id=%s",(Patient_id,))
             print("----------------------Patient data deleted successfully----------------------")
             break
-def editpatdep(Patient_id):#funtion to edit patient department
+def editpatdep(Patient_id):#function to edit patient department
     while True:
         Department=input("Enter correct department : ")
         y.execute("update patient_details set Department =%s where Patient_id =%s",(Department,Patient_id))
         print("----------------------Patient Department edited successfully----------------------")
         break
 
-def editpatdoc(Patient_id):#funtion to edit doctor following patient
+def editpatdoc(Patient_id):#function to edit doctor following patient
     while True:
         DoctorName=input("enter the correct doctors name : ")
         y.execute("update patient_details set DoctorName =%s where Patient_id =%s",(DoctorName,Patient_id))
         print("----------------------Doctor follouing case edited successfully----------------------")
         break
 
-def editpatname(Patient_id):#funtion to edit patient name
+def editpatname(Patient_id):#function to edit patient name
     while True:
         Name=input("enter the correct patient's name : ")
         y.execute("update patient_details set Name =%s where Patient_id =%s",(Name,Patient_id))
         print("----------------------Patient name edited successfully----------------------")
         break
 
-def editpatage(Patient_id):#funtion to edit patient age
+def editpatage(Patient_id):#function to edit patient age
     while True:
         Age=int(input("enter the correct patient's age : "))
         y.execute("update patient_details set Age =%s where Patient_id =%s",(Age,Patient_id))
@@ -98,14 +98,14 @@ def editpatgender(Patient_id):#function to edit patient gender
         print("----------------------Patient address gender successfully----------------------")
         break
 
-def editpataddress(Patient_id):#funtion to edit patient address
+def editpataddress(Patient_id):#function to edit patient address
     while True:
         Address=input("enter the correct patient's address : ")
         y.execute("update patient_details set Address =%s where Patient_id =%s",(Address,Patient_id))
         print("----------------------Patient address edited successfully----------------------")
         break
 
-def editpatroom(Patient_id):#funtion to edit patient room no
+def editpatroom(Patient_id):#function to edit patient room no
     while True:
         RoomNumber =int(input("enter the correct patient's roomno : "))
         y.execute("update patient_details set RoomNumber =%s where Patient_id =%s",(RoomNumber,Patient_id))
@@ -126,7 +126,7 @@ def editdocid(Patient_id):
         print("----------------------Doctor id edited successfully----------------------")
         break
 
-def editpatient():#funtion to edit patient
+def editpatient():#function to edit patient
     Patient_id=int(input("Enter patient ID :"))
     while True :
         print("-----------------------------------------")
@@ -195,7 +195,7 @@ def viewfullpattable():#function to view full patient table
             print(i[j],end='\t')
         
 
-def adddoc():#funtion to add doctor
+def adddoc():#function to add doctor
     Doc_id= int(input("Enter Doctor id                                      : "))
     Name=       input("Enter name of doctor                                 : ")
     Dept      = input("Enter Dept name                                      : ")
@@ -204,7 +204,7 @@ def adddoc():#funtion to add doctor
     y.execute("insert into doctor_details values(%s,%s,%s,%s,%s)",(Doc_id,Name ,Dept ,Address ,Phno))
     print("----------------------Doctor added successfully----------------------")
 
-def dispdoc():#funtion to disp doctor details
+def dispdoc():#function to disp doctor details
     Doc_id= int(input("Enter doctor ID : "))
     y.execute("select * from doctor_details where Doc_id=(%s)",(Doc_id,)) 
     z=y.fetchall()
@@ -216,7 +216,7 @@ def dispdoc():#funtion to disp doctor details
     if z==[]:
         print('please enter correct id')
 
-def deldoc():#funtion to delete doctor
+def deldoc():#function to delete doctor
     while True:
         Doc_id = int(input("Enter doctor ID : "))
         y.execute("select * from doctor_details where Doc_id=(%s)",(Doc_id,)) 
@@ -241,7 +241,7 @@ def editdocdep():#function to edit doctor dep
             y.execute("update doctor_details set Dept =%s where Doc_id =%s",(Dept,Doc_id))
             print("----------------------Doctor's department edited successfully----------------------/")
             break
-def editdocname():#funtion to edit doctor name
+def editdocname():#function to edit doctor name
     while True:
         Doc_id=int(input("Enter the doctor's id"))
         y.execute("select * from doctor_details where Doc_id=(%s)",(Doc_id,)) 
@@ -254,7 +254,7 @@ def editdocname():#funtion to edit doctor name
             y.execute("update doctor_details set Name =%s where Doc_id =%s",(Name,Doc_id))
             print("----------------------Doctor's name edited successfully----------------------")
             break
-def editdocaddress():#funtion to edit doctor address
+def editdocaddress():#function to edit doctor address
     while True:
         Doc_id=int(input("Enter the doctor's id"))
         y.execute("select * from doctor_details where Doc_id=(%s)",(Doc_id,)) 
@@ -267,7 +267,7 @@ def editdocaddress():#funtion to edit doctor address
             y.execute("update doctor_details set Address =%s where Doc_id =%s",(Address,Doc_id))
             print("----------------------Doctor's address edited successfully----------------------")
             break
-def editdocphone():#funtion to edit doctor phone
+def editdocphone():#function to edit doctor phone
     while True:
         Doc_id=int(input("Enter the doctor's id"))
         y.execute("select * from doctor_details where Doc_id=(%s)",(Doc_id,)) 
@@ -280,7 +280,7 @@ def editdocphone():#funtion to edit doctor phone
             y.execute("update doctor_details set Phno =%s where Doc_id =%s",(Phno,Doc_id))
             print("----------------------Doctor's phone no. edited successfully----------------------")
             break
-def editdoc():#funtion to edit doctor
+def editdoc():#function to edit doctor
     while True:
         print("-----------------------------------------")
         print("|To Edit doctor's department Enter 1    |")
@@ -328,7 +328,7 @@ def dispdepuser():#function to display hospital depatments
         for j in range(l):
             print(i[j],end='\t')
 
-def dispdocuser():#funtion to display doctors
+def dispdocuser():#function to display doctors
     print("Hospital's doctors :")
     y.execute("select Name from doctor_details")
     z=y.fetchall()
@@ -338,7 +338,7 @@ def dispdocuser():#funtion to display doctors
         for j in range(l):
             print(i[j],end='\t')
 
-def docpatlst():#funtion to view list of patients treated by a particular doctor
+def docpatlst():#function to view list of patients treated by a particular doctor
     D_id= int(input("Enter doctor ID : "))
     y.execute("select Patient_Details.name from patient_details,doctor_details where patient_details.Doc_id=doctor_details.Doc_id and \
 doctor_details.Doc_id=(%s)",(D_id,)) 
